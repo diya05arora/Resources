@@ -37,6 +37,8 @@ ul li a {
     font-size: 16px;
     padding: 10px 15px;
     transition: 0.3s;
+    border: 1px solid white;
+    border-radius: 10px;
 }
 
 ul li a:hover {
@@ -51,6 +53,7 @@ ul li a:hover {
     background: rgb(0, 0, 0);
     top: 100%;
     left: 0;
+    margin-top: 15px;
     min-width: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -73,7 +76,8 @@ ul li a:hover {
 }
 
 .dropdown li a:hover {
-    background: #f0f0f0;
+    background: #979595;
+    border: 2px solid white;
 }
 
 /* Show dropdown on hover (Desktop) */
@@ -104,7 +108,7 @@ ul li:hover .dropdown {
         top: 60px;
         left: -100%;
         width: 100%;
-        background: #004080;
+        background: #000000;
         flex-direction: column;
         transition: all 0.3s ease;
     }

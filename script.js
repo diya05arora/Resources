@@ -1,27 +1,37 @@
+function toggleMenu() {
+    var nav = document.getElementById("navLinks");
+    if (header.style.display === "block") {
+        header.style.display = "none";
+    } else {
+        header.style.display = "block";
+    }
+}
 document.addEventListener("DOMContentLoaded", function () {
-    const dropdownLinks = document.querySelectorAll(".new-add-bl-");
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slides");
+    const totalSlides = slides.length;
+    console.log(totalSlides);
 
-    dropdownLinks.forEach((link) => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-            let dropdown = this.nextElementSibling;
-
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                document.querySelectorAll(".dropdown").forEach((menu) => {
-                    menu.style.display = "none";
-                });
-                dropdown.style.display = "block";
-            }
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === index ? "1" : "0";  // Show only the active slide
+            slide.style.zIndex = i === index ? "1" : "-1";  // Bring it to the front
+            slide.style.transition = "opacity 1s ease-in-out";  // Smooth transition
         });
-    });
+    }
+    
 
-    document.addEventListener("click", function (event) {
-        if (!event.target.closest("nav")) {
-            document.querySelectorAll(".dropdown").forEach((menu) => {
-                menu.style.display = "none";
-            });
-        }
-    });
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+
+    showSlide(currentSlide);
+    setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
 });
